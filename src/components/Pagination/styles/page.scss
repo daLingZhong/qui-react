@@ -1,0 +1,144 @@
+@import '@/styles/var.scss';
+@import '@/styles/color.scss';
+@import '../../Button/styles/style.scss';
+
+$page-bg: #fff;
+$page-disabled-bg: #f4f4f4;
+$page-disabled-color: #cccccc;
+
+.$(prefix)-pagination {
+  display: inline-flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  line-height: 32px;
+
+  &-small {
+    line-height: 28px;
+  }
+
+  &__total,
+  &__prev,
+  &__next,
+  &__step,
+  &__ellipsis,
+  &__options {
+    &:not(:last-child) {
+      margin-right: 8px;
+    }
+  }
+
+  &__ellipsis {
+    position: relative;
+    min-width: 32px;
+    cursor: pointer;
+    outline: 0;
+    color: $common-content;
+    color: var(--qui-common-content);
+
+    &-disabled {
+      cursor: not-allowed;
+    }
+
+    &__dot,
+    &__icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transition: all 0.2s;
+      transform: translate3d(-50%, -50%, 0);
+    }
+    &__dot {
+      opacity: 0.5;
+    }
+    &__icon {
+      color: $primary6;
+      color: var(--qui-primary6);
+      opacity: 0;
+    }
+
+    &:hover &__dot-hover,
+    &__icon-hover {
+      opacity: 0;
+    }
+
+    &:hover &__icon {
+      opacity: 1;
+    }
+  }
+
+  &__options {
+    margin-left: 8px;
+  }
+
+  &__sizechanger,
+  &__jumper {
+    display: inline-flex;
+    vertical-align: top;
+  }
+  &__jumper {
+    color: $common-content;
+    color: var(--qui-common-content);
+
+    input {
+      margin: 0 8px;
+      padding: 5px 10px;
+      width: 50px;
+    }
+  }
+}
+
+.qui-pager {
+  min-width: 32px;
+  height: 32px;
+  line-height: 30px;
+  overflow: hidden;
+  cursor: pointer;
+  text-align: center;
+  white-space: nowrap;
+  outline: 0;
+  border: 1px solid $button-normal-border;
+  border: 1px solid var(--qui-button-normal-border);
+  background-color: $page-bg;
+  background-color: var(--qui-page-bg);
+  border-radius: 2px;
+  user-select: none;
+  transition: all 0.3s;
+  color: $common-content;
+  color: var(--qui-common-content);
+
+  &--small {
+    min-width: 28px;
+    height: 28px;
+    line-height: 26px;
+  }
+
+  &:not(:last-child) {
+    margin-right: 8px;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  &:hover,
+  &--active {
+    color: $primary6;
+    color: var(--qui-primary6);
+    border-color: $primary6;
+    border-color: var(--qui-primary6);
+  }
+
+  &--disabled,
+  &--disabled:hover,
+  &--disabled:focus {
+    pointer-events: none;
+    color: $page-disabled-color;
+    color: var(--qui-page-disabled-color);
+    background-color: $page-disabled-bg;
+    background-color: var(--qui-page-disabled-bg);
+    cursor: not-allowed;
+    border-color: var(--qui-button-normal-border);
+  }
+}

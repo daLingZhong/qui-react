@@ -1,0 +1,78 @@
+@import '@/styles/var.scss';
+@import '@/styles/color.scss';
+
+$menu-bg: #fff;
+$menu-color: #5a5b5c;
+$menu-hover: $primary2;
+$menu-active: $primary1;
+$menu-disabled: #cccccc;
+
+.$(prefix)-menu {
+  width: 120px;
+  max-height: 300px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  background-color: $menu-bg;
+  background-color: var(--qui-menu-bg);
+  color: $menu-color;
+  color: var(--qui-menu-color);
+  margin-bottom: 10px;
+  line-height: 28px;
+  box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.2);
+  list-style: none;
+  overflow: hidden;
+
+  &-ul {
+    padding: 0;
+    margin: 0;
+    outline: none;
+  }
+
+  &-li {
+    padding: 0 12px;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  &-hover {
+    &:hover {
+      color: $primary6;
+      color: var(--qui-primary6);
+      background-color: $menu-hover;
+      background-color: var(--qui-menu-hover);
+    }
+  }
+
+  &-active {
+    color: $primary6;
+    color: var(--qui-primary6);
+    background-color: $menu-active;
+    background-color: var(--qui-menu-active);
+  }
+
+  &-disabled {
+    cursor: not-allowed;
+    color: $menu-disabled;
+    color: var(--qui-menu-disabled);
+  }
+
+  &__checkIcon {
+    color: $primary6;
+    color: var(--qui-primary6);
+    float: right;
+  }
+
+  &__group {
+    & > div {
+      cursor: default;
+      font-size: 12px;
+      padding-left: 4px;
+      color: #cccccc;
+    }
+
+    & > ul {
+      list-style: none;
+      padding: 0;
+    }
+  }
+}

@@ -1,0 +1,157 @@
+@import '@/styles/var.scss';
+@import '@/styles/color.scss';
+
+$timeline-bg: #d8d8d8;
+
+.$(prefix)-timeline {
+  list-style: none;
+  width: 100%;
+  padding: 0;
+  font-size: 13px;
+  line-height: 1.5;
+
+  &-right > li {
+    & > .$(prefix)-timeline__dot {
+      left: 100%;
+      margin-left: -14px;
+    }
+
+    & > .$(prefix)-timeline__line {
+      left: 100%;
+      margin-left: -8px;
+    }
+
+    & > .$(prefix)-timeline__title {
+      left: 100%;
+      margin-left: -50%;
+      width: 50%;
+      text-align: right;
+      padding-right: 26px;
+    }
+
+    & > .$(prefix)-timeline__content {
+      text-align: right;
+      margin-right: 27px;
+    }
+  }
+
+  &-alternate > li {
+    & > .$(prefix)-timeline__dot {
+      left: 50%;
+      margin-left: -14px;
+    }
+
+    & > .$(prefix)-timeline__line {
+      left: 50%;
+      margin-left: -8px;
+    }
+
+    & > .$(prefix)-timeline__title {
+      left: 50%;
+    }
+
+    &:nth-of-type(odd) {
+      & > .$(prefix)-timeline__title {
+        margin-left: 12px;
+      }
+
+      & > .$(prefix)-timeline__content {
+        width: calc(50% - 14px);
+        margin-left: calc(50% + 12px);
+      }
+    }
+
+    &:nth-of-type(even) {
+      & > .$(prefix)-timeline__title {
+        margin-left: -50%;
+        width: 50%;
+        text-align: right;
+        padding-right: 26px;
+      }
+
+      & > .$(prefix)-timeline__content {
+        width: calc(50% - 14px);
+        margin-left: -12px;
+        text-align: right;
+      }
+    }
+  }
+
+  & > li {
+    position: relative;
+    margin: 0;
+    padding: 0 0 40px;
+    list-style: none;
+
+    &:last-child {
+      padding-bottom: 0;
+
+      & > .$(prefix)-timeline__line {
+        display: none;
+      }
+    }
+  }
+
+  &__dot {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border-color: $primary6;
+    border-color: var(--qui-primary6);
+    border-radius: 50%;
+    z-index: 1;
+    border: 2px solid;
+
+    &-loading {
+      border: 1px solid;
+      border-right-color: $primary6;
+      border-right-color: var(--qui-primary6);
+      border-bottom-color: transparent !important;
+      border-left-color: transparent !important;
+      border-top-color: transparent !important;
+      animation: spin 1s infinite linear;
+    }
+
+    &-info {
+      border-color: $info;
+    }
+
+    &-success {
+      border-color: $success;
+    }
+
+    &-error {
+      border-color: $serious;
+    }
+
+    &-warning {
+      border-color: $warning;
+    }
+  }
+
+  &__title {
+    position: absolute;
+    top: -3px;
+    margin: 0 0 0 26px;
+    color: $common-title;
+    color: var(--qui-common-title);
+  }
+
+  &__line {
+    position: absolute;
+    width: 2px;
+    height: calc(100% - 13px);
+    background-color: $timeline-bg;
+    background-color: var(--qui-timeline-bg);
+    left: 6px;
+    top: 1em;
+    z-index: 0;
+  }
+
+  &__content {
+    padding-top: 30px;
+    margin-left: 26px;
+    color: $common-content;
+    color: var(--qui-common-content);
+  }
+}

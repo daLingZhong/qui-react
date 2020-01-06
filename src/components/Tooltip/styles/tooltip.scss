@@ -1,0 +1,150 @@
+@import '@/styles/var.scss';
+@import '@/styles/color.scss';
+
+$bgColor: rgba(17, 17, 17, 0.8);
+
+.$(prefix)-tooltip {
+  &__message {
+    padding: 7px 12px;
+    background-color: $bgColor;
+    background-color: var(--qui-tooltip-bg);
+    border-radius: 2px;
+    color: #fff;
+    font-size: 13px;
+    line-height: 18px;
+    position: relative;
+    z-index: 1200;
+
+    &-right,
+    &-rightTop,
+    &-rightBottom {
+      margin-left: 8px;
+    }
+
+    &-left,
+    &-leftTop,
+    &-leftBottom {
+      margin-right: 8px;
+    }
+
+    &-top,
+    &-topRight,
+    &-topLeft {
+      margin-bottom: 8px;
+    }
+
+    &-bottom,
+    &-bottomRight,
+    &-bottomLeft {
+      margin-top: 8px;
+    }
+  }
+
+  &__arrow {
+    width: 0;
+    height: 0;
+    border-width: 5px;
+    border-style: solid;
+    position: absolute;
+
+    &-right {
+      border-color: transparent $bgColor transparent transparent;
+      border-color: transparent var(--qui-tooltip-bg) transparent transparent;
+      left: -10px;
+      top: 50%;
+      margin-top: -5px;
+    }
+
+    &-rightTop {
+      border-color: transparent $bgColor transparent transparent;
+      border-color: transparent var(--qui-tooltip-bg) transparent transparent;
+      left: -10px;
+      top: 5px;
+    }
+
+    &-rightBottom {
+      border-color: transparent $bgColor transparent transparent;
+      border-color: transparent var(--qui-tooltip-bg) transparent transparent;
+      left: -10px;
+      bottom: 5px;
+    }
+
+    &-left {
+      border-color: transparent transparent transparent $bgColor;
+      border-color: transparent transparent transparent var(--qui-tooltip-bg);
+      right: -10px;
+      top: 50%;
+      margin-top: -5px;
+    }
+
+    &-leftTop {
+      border-color: transparent transparent transparent $bgColor;
+      border-color: transparent transparent transparent var(--qui-tooltip-bg);
+      right: -10px;
+      top: 5px;
+    }
+
+    &-leftBottom {
+      border-color: transparent transparent transparent $bgColor;
+      border-color: transparent transparent transparent var(--qui-tooltip-bg);
+      right: -10px;
+      bottom: 5px;
+    }
+
+    &-top {
+      border-color: $bgColor transparent transparent transparent;
+      border-color: var(--qui-tooltip-bg) transparent transparent transparent;
+      left: 50%;
+      margin-left: -5px;
+      bottom: -10px;
+    }
+
+    &-topLeft {
+      border-color: $bgColor transparent transparent transparent;
+      border-color: var(--qui-tooltip-bg) transparent transparent transparent;
+      left: 5px;
+      bottom: -10px;
+    }
+
+    &-topRight {
+      border-color: $bgColor transparent transparent transparent;
+      border-color: var(--qui-tooltip-bg) transparent transparent transparent;
+      right: 5px;
+      bottom: -10px;
+    }
+
+    &-bottom {
+      border-color: transparent transparent $bgColor transparent;
+      border-color: transparent transparent var(--qui-tooltip-bg) transparent;
+      left: 50%;
+      margin-left: -5px;
+      top: -10px;
+    }
+
+    &-bottomLeft {
+      border-color: transparent transparent $bgColor transparent;
+      border-color: transparent transparent var(--qui-tooltip-bg) transparent;
+      left: 5px;
+      top: -10px;
+    }
+
+    &-bottomRight {
+      border-color: transparent transparent $bgColor transparent;
+      border-color: transparent transparent var(--qui-tooltip-bg) transparent;
+      right: 5px;
+      top: -10px;
+    }
+  }
+
+  &-animate {
+    &-enter,
+    &-enter-active {
+      animation: fadeIn 0.3s linear;
+    }
+
+    &-exit,
+    &-exit-active {
+      animation: fadeOut 0.3s linear;
+    }
+  }
+}

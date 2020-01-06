@@ -1,0 +1,131 @@
+@import '@/styles/var.scss';
+@import '@/styles/index.scss';
+
+$alert-info: $info;
+$alert-success: $success;
+$alert-warning: $warning;
+$alert-error: $error;
+
+$alert-text-font-size: 13px;
+$alert-title-font-size: 14px;
+
+.$(prefix)-alert {
+  display: flex;
+  position: relative;
+  padding: 8px 16px;
+  color: $common-content;
+  color: var(--qui-common-content);
+  line-height: 22px;
+  font-size: $alert-text-font-size;
+  border: 1px solid transparent;
+  background-color: transparent;
+  border-radius: 2px;
+
+  & + & {
+    margin-top: 12px;
+  }
+
+  &__icon {
+    margin-top: 3px;
+    margin-right: 8px;
+    width: 16px;
+    height: 16px;
+    overflow: hidden;
+    line-height: 16px;
+    font-size: 16px;
+  }
+
+  &__main {
+    flex: 1;
+  }
+
+  &__title {
+    margin-top: 4px;
+    margin-bottom: 6px;
+    color: $common-title;
+    color: var(--qui-common-title);
+    font-size: $alert-title-font-size;
+  }
+
+  &__message {
+    min-height: 22px;
+  }
+
+  &__close {
+    margin-left: 8px;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    font-size: 14px;
+    color: $common-close-button;
+    color: var(--qui-common-close-button);
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    transition: color 0.3s;
+
+    &:active,
+    &:hover {
+      outline: 0;
+      text-decoration: none;
+    }
+    &:hover {
+      color: $commont-close-button-hover;
+      color: var(--qui-common-close-button-hover);
+    }
+  }
+
+  &--animate-exit,
+  &--animate-exit-active {
+    animation: slideUpOut 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86);
+    animation-fill-mode: both;
+  }
+
+  &[data-alert-type='info'] {
+    border-color: $alert-info;
+    background-color: color($alert-info a(10%));
+  }
+  &[data-alert-type='info'] &__icon {
+    color: $alert-info;
+  }
+  &[data-alert-type='success'] {
+    border-color: $alert-success;
+    background-color: color($alert-success a(10%));
+  }
+  &[data-alert-type='success'] &__icon {
+    color: $alert-success;
+  }
+  &[data-alert-type='warning'] {
+    border-color: $alert-warning;
+    background-color: color($alert-warning a(10%));
+  }
+  &[data-alert-type='warning'] &__icon {
+    color: $alert-warning;
+  }
+  &[data-alert-type='error'] {
+    border-color: $alert-error;
+    background-color: color($alert-error a(10%));
+  }
+  &[data-alert-type='error'] &__icon {
+    color: $alert-error;
+  }
+
+  &--has-title {
+    padding: 12px 16px;
+    line-height: 22px;
+  }
+  &--has-title &__icon {
+    margin-right: 12px;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    font-size: 24px;
+  }
+
+  &--closable {
+    padding-right: 8px;
+  }
+  &--has-title&--closable {
+    padding-right: 12px;
+  }
+}

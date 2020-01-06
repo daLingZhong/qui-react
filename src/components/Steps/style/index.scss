@@ -1,0 +1,229 @@
+@import '@/styles/var.scss';
+@import '@/styles/color.scss';
+
+$size-md: 32px;
+$size-md-title-font-size: 15px;
+$size-md-desc-font-size: 12px;
+$size-sm-desc-font-size: 12px;
+
+$size-sm: 24px;
+$size-sm-font-size: 12px;
+
+$description-max-width: 150px;
+
+$status-wait-font-color: #b4b6b8;
+
+$status-process-desc-color: #5a5b5c;
+$status-process-font-color: #fff;
+
+$status-error-font-color: #f83b3b;
+
+$status-finish-title-color: #2a2b2c;
+
+$icon-border-color: #e4e6e8;
+
+$tail-color: #e4e6e8;
+
+.$(prefix)_step {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+
+  &_item {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+
+    &:not(:last-child) {
+      margin-right: 14px;
+      flex: 1;
+    }
+
+    &_icon {
+      margin-right: 8px;
+      border-radius: 50%;
+      text-align: center;
+    }
+
+    &_content {
+      flex: 1;
+    }
+
+    &_header {
+      display: flex;
+      align-items: flex-start;
+    }
+
+    &_title {
+      line-height: $size-md;
+      margin-right: 8px;
+      font-size: $size-md-title-font-size;
+      color: $status-wait-font-color;
+    }
+
+    &_description {
+      max-width: $description-max-width;
+      color: $status-wait-font-color;
+      word-wrap: break-word;
+    }
+
+    &:not(:last-child) &_tail::before {
+      display: block;
+    }
+
+    &_tail {
+      flex: 1;
+      position: relative;
+      height: 100%;
+
+      &::before {
+        display: none;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        border-radius: 1px;
+        background-color: $tail-color;
+        transition: background-color 0.3s;
+        content: '';
+      }
+    }
+
+    &_icon_wait {
+      border: 1px solid $status-wait-font-color;
+      color: $status-wait-font-color;
+    }
+
+    &_icon_process {
+      border: 1px solid $primary6;
+      color: $status-process-font-color;
+      font-weight: bold;
+      background-color: $primary6;
+    }
+
+    &_icon_error {
+      color: $error;
+      border: 1px solid $error;
+    }
+
+    &_icon_finish {
+      color: $primary6;
+      border: 1px solid $primary6;
+    }
+
+    &_icon_custom {
+      border-radius: 0;
+      background-color: transparent;
+      border: 1px solid transparent;
+    }
+
+    &[data-step-status='process'] &_title,
+    &[data-step-status='finish'] &_title,
+    &[data-step-status='error'] &_title {
+      font-weight: bold;
+    }
+
+    &[data-step-status='finish'] &_tail::before {
+      background-color: $primary6;
+    }
+
+    &[data-step-status='error'] &_description,
+    &[data-step-status='error'] &_title {
+      color: $error;
+    }
+
+    &[data-step-status='finish'] &_title {
+      color: $common-title;
+      color: var(--qui-common-title);
+    }
+  }
+
+  &[data-steps-direction='vertical'] {
+    flex-direction: column;
+  }
+
+  &[data-steps-direction='vertical'] &_item {
+    flex: none;
+    position: relative;
+
+    &:not(:last-child) {
+      margin-right: 0;
+    }
+
+    &_tail {
+      flex: none;
+      position: absolute;
+      width: 1px;
+      height: auto;
+      bottom: 4px;
+
+      &::before {
+        top: 0;
+        bottom: 0;
+        width: 1px;
+        height: 100%;
+      }
+    }
+  }
+
+  &[data-steps-size='sm'] {
+    min-height: $size-sm;
+  }
+
+  &[data-steps-size='sm'] &_item {
+    &_icon {
+      width: $size-sm;
+      height: $size-sm;
+      line-height: $size-sm;
+      font-size: $size-sm-font-size;
+    }
+
+    &_header {
+      height: $size-md;
+    }
+
+    &_description {
+      font-size: $size-sm-desc-font-size;
+    }
+
+    &_content {
+      min-height: calc($size-sm + 32px);
+    }
+  }
+
+  &[data-steps-size='default'] {
+    min-height: $size-md;
+  }
+
+  &[data-steps-size='default'] &_item {
+    &_icon {
+      width: $size-md;
+      height: $size-md;
+      line-height: $size-md;
+      font-size: $size-md-title-font-size;
+    }
+
+    &_header {
+      height: $size-md;
+    }
+
+    &_description {
+      font-size: $size-md-desc-font-size;
+    }
+
+    &_content {
+      min-height: calc($size-md + 48px);
+    }
+  }
+
+  &[data-steps-size='default'][data-steps-direction='vertical'] &_item_tail {
+    top: calc($size-md + 4px);
+    left: calc($size-md / 2);
+  }
+
+  &[data-steps-size='sm'][data-steps-direction='vertical'] &_item_tail {
+    top: calc($size-sm + 4px);
+    left: calc($size-sm / 2);
+  }
+}

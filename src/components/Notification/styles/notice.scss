@@ -1,0 +1,253 @@
+@import '@/styles/var.scss';
+@import '@/styles/color.scss';
+@import '../../Modal/styles/modal.scss';
+
+$z-index: 1020;
+$width: 380px;
+$gap-horizontal: 24px;
+$gap-vertical: 24px;
+$gap-notice: 15px;
+$notice-padding-y: 16px;
+$notice-padding-x: 24px;
+$notice-radius: 4px;
+$notice-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+.$(prefix)-notification {
+  position: fixed;
+  z-index: $z-index;
+  top: $gap-vertical;
+  right: $gap-horizontal;
+  bottom: auto;
+  left: auto;
+  width: $width;
+  min-width: calc(320px - $gap-horizontal * 2);
+  max-width: calc(100vw - $gap-horizontal * 2);
+  font-size: 14px;
+  box-sizing: border-box;
+
+  &[data-notification-placement='topRight'],
+  &[data-notification-placement='bottomRight'] {
+    right: $gap-horizontal;
+    left: auto;
+  }
+  &[data-notification-placement='topLeft'],
+  &[data-notification-placement='bottomLeft'] {
+    right: auto;
+    left: $gap-horizontal;
+  }
+  &[data-notification-placement='topRight'],
+  &[data-notification-placement='topLeft'] {
+    top: $gap-vertical;
+    bottom: auto;
+  }
+  &[data-notification-placement='bottomRight'],
+  &[data-notification-placement='bottomLeft'] {
+    top: auto;
+    bottom: $gap-vertical;
+  }
+
+  &__notice {
+    position: relative;
+    margin-bottom: $gap-notice;
+    padding: $notice-padding-y $notice-padding-x;
+    overflow: hidden;
+    background-color: $modal-bg;
+    background-color: var(--qui-modal-bg);
+    border-radius: $notice-radius;
+    box-shadow: $notice-shadow;
+
+    &[data-notification-type]::after {
+      position: absolute;
+      top: 0;
+      right: auto;
+      left: 0;
+      bottom: 0;
+      width: 4px;
+      background-color: transparent;
+      content: '';
+    }
+
+    &-left {
+      &::after {
+        left: auto !important;
+        right: 0 !important;
+      }
+    }
+
+    &[data-notification-type='info']::after {
+      background-color: $info;
+    }
+    &[data-notification-type='success']::after {
+      background-color: $success;
+    }
+    &[data-notification-type='warning']::after {
+      background-color: $warning;
+    }
+    &[data-notification-type='error']::after {
+      background-color: $error;
+    }
+  }
+
+  &__content {
+    word-wrap: break-word;
+
+    &-left {
+      text-align: right;
+    }
+  }
+
+  &__title {
+    margin-bottom: 8px;
+    padding-right: 24px;
+    line-height: 30px;
+    font-size: 16px;
+    font-weight: 500;
+    color: $common-title;
+    color: var(--qui-common-title);
+
+    &-left {
+      padding-left: 24px;
+      padding-right: 0;
+    }
+  }
+
+  &__message {
+    color: $common-content;
+    color: var(--qui-common-content);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 332px;
+    display: -webkit-box;
+    -webkit-line-clamp: 20;
+    -webkit-box-orient: vertical;
+    word-break: break-all;
+  }
+
+  &__close {
+    position: absolute;
+    right: 18px;
+    top: 15px;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    font-size: 14px;
+    color: $common-close-button;
+    color: var(--qui-common-close-button);
+    cursor: pointer;
+    outline: none;
+    transition: color 0.3s;
+
+    &:hover {
+      color: $commont-close-button-hover;
+      color: var(--qui-common-close-button-hover);
+    }
+
+    &-left {
+      right: 0;
+      left: 18px;
+    }
+  }
+
+  // 动画
+  &__notice--fade-appear,
+  &__notice--fade-left-appear,
+  &__notice--fade-enter,
+  &__notice--fade-left-enter,
+  &__notice--fade-exit,
+  &__notice--fade-left-exit {
+    animation-duration: 0.3s;
+    animation-fill-mode: both;
+    animation-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
+    animation-play-state: paused;
+  }
+  &__notice--fade-appear,
+  &__notice--fade-enter {
+    opacity: 0;
+  }
+  &__notice--fade-exit {
+    animation-duration: 0.24s;
+  }
+  &__notice--fade-appear,
+  &__notice--fade-appear-active,
+  &__notice--fade-enter,
+  &__notice--fade-enter-active {
+    animation-name: NotificationRightFadeIn;
+    animation-play-state: running;
+  }
+  &__notice--fade-exit,
+  &__notice--fade-exit-active {
+    animation-name: NotificationRightFadeOut;
+    animation-play-state: running;
+  }
+  &__notice--fade-left-appear,
+  &__notice--fade-left-appear-active,
+  &__notice--fade-left-enter,
+  &__notice--fade-left-enter-active,
+  &__notice--fade-left-appear,
+  &__notice--fade-left-appear-active,
+  &__notice--fade-left-enter,
+  &__notice--fade-left-enter-active {
+    animation-name: NotificationLeftFadeIn;
+    animation-play-state: running;
+  }
+  &__notice--fade-left-exit,
+  &__notice--fade-left-exit-active,
+  &__notice--fade-left-exit,
+  &__notice--fade-left-exit-active {
+    animation-name: NotificationLeftFadeOut;
+    animation-play-state: running;
+  }
+}
+
+@keyframes NotificationRightFadeIn {
+  0% {
+    right: calc(-100% - 24px);
+    opacity: 0;
+  }
+  100% {
+    right: 0;
+    opacity: 1;
+  }
+}
+@keyframes NotificationRightFadeOut {
+  0% {
+    margin-bottom: $gap-notice;
+    padding-top: $notice-padding-y;
+    padding-bottom: $notice-padding-y;
+    max-height: 150px;
+    opacity: 1;
+  }
+  100% {
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    max-height: 0;
+    opacity: 0;
+  }
+}
+@keyframes NotificationLeftFadeIn {
+  0% {
+    left: calc(-100% - $gap-horizontal);
+    opacity: 0;
+  }
+  100% {
+    left: 0;
+    opacity: 1;
+  }
+}
+@keyframes NotificationLeftFadeOut {
+  0% {
+    margin-bottom: $gap-notice;
+    padding-top: $notice-padding-y;
+    padding-bottom: $notice-padding-y;
+    max-height: 150px;
+    opacity: 1;
+  }
+  100% {
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    max-height: 0;
+    opacity: 0;
+  }
+}

@@ -1,0 +1,175 @@
+@import '@/styles/var.scss';
+@import '@/styles/color.scss';
+
+$tabs-bg: #fff;
+$tabs-title-color: #5a5b5c;
+$tabs-disabled-color: #9a9b9c;
+$tabs-border: #e4e6e8;
+$tabs-card-bg: #fafafa;
+$tabs-card-active-bg: #fff;
+
+.$(prefix)-tabs {
+  &__listContent {
+    overflow: hidden;
+  }
+
+  &__ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    min-width: 100%;
+    height: 40px;
+    font-size: 14px;
+    white-space: nowrap;
+    display: inline-block;
+
+    &-bg {
+      background-color: $tabs-bg;
+      background-color: var(--qui-tabs-bg);
+    }
+
+    &-card {
+      border-bottom: 1px solid #e4e6e8;
+    }
+  }
+
+  &__item-line {
+    position: relative;
+    display: inline-block;
+    line-height: 40px;
+    cursor: pointer;
+    padding: 0 16px;
+    min-width: 70px;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    color: $tabs-title-color;
+    color: var(--qui-tabs-title-color);
+    transition: 0.3s all;
+
+    &::after {
+      position: absolute;
+      bottom: 0px;
+      left: 50%;
+      width: 0;
+      height: 3px;
+      background-color: $primary4;
+      background-color: var(--qui-primary4);
+      content: '';
+      transform: translate3d(-50%, 0, 0);
+      transition: width 0.2s;
+    }
+
+    &-active {
+      color: $primary5;
+      color: var(--qui-primary5);
+
+      &::after {
+        width: 100%;
+      }
+    }
+
+    &-disabled {
+      color: $tabs-disabled-color;
+      color: var(--qui-tabs-disabled-color);
+      cursor: not-allowed;
+    }
+  }
+
+  &__item-card {
+    position: relative;
+    margin-right: 2px;
+    border: 1px solid $tabs-border;
+    border: 1px solid var(--qui-tabs-border);
+    background-color: $tabs-card-bg;
+    background-color: var(--qui-tabs-card-bg);
+    float: left;
+    line-height: 38px;
+    cursor: pointer;
+    display: block;
+    padding: 0 10px;
+    min-width: 70px;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    color: $tabs-title-color;
+    color: var(--qui-tabs-title-color);
+    transition: 0.3s all;
+    border-bottom: 1px solid $tabs-border;
+    border-bottom: 1px solid var(--qui-tabs-border);
+
+    &::after {
+      position: absolute;
+      bottom: -1px;
+      left: 50%;
+      width: 0;
+      height: 1px;
+      background-color: $tabs-card-active-bg;
+      background-color: var(--qui-tabs-card-active-bg);
+      content: '';
+      transform: translate3d(-50%, 0, 0);
+      transition: width 0.2s;
+    }
+
+    &-active {
+      color: $primary5;
+      color: var(--qui-primary5);
+      background-color: $tabs-card-active-bg;
+      background-color: var(--qui-tabs-card-active-bg);
+
+      &::after {
+        width: 100%;
+      }
+    }
+
+    &-disabled {
+      color: $tabs-disabled-color;
+      color: var(--qui-tabs-disabled-color);
+      cursor: not-allowed;
+    }
+  }
+
+  &__icon {
+    margin-right: 8px;
+  }
+
+  &__close {
+    font-size: 10px;
+    margin-left: 10px;
+    color: #aaaaaa;
+    transition: all 0.3s;
+    line-height: 1;
+
+    &:hover {
+      color: #5a5b5c;
+    }
+
+    &-disabled {
+      pointer-events: none;
+    }
+  }
+
+  &__add {
+    font-size: 16px;
+    line-height: 40px;
+    margin-left: 10px;
+    color: #5a5b5c;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+      color: #000;
+    }
+  }
+
+  &__content {
+    transition: all 0.3s;
+    margin-top: 16px;
+    color: $common-content;
+    color: var(--qui-common-content);
+
+    &-fadeIn {
+      animation: fadeIn 0.5s 0s 1;
+    }
+  }
+}

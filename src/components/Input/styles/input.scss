@@ -1,0 +1,258 @@
+@import '@/styles/var.scss';
+@import '@/styles/color.scss';
+
+$input-bg: #fff;
+$input-color: #555555;
+$input-border: #e4e6e8;
+$input-addon-bg: #fafafa;
+$input-disabled-bg: #f4f4f4;
+$input-disabled-color: #cccccc;
+
+.$(prefix)-input {
+  background-color: $input-bg;
+  background-color: var(--qui-input-bg);
+  color: $input-color;
+  color: var(--qui-input-color);
+  display: inline-block;
+  border: 1px solid $input-border;
+  border: 1px solid var(--qui-input-border);
+  border-radius: 2px;
+  outline: none;
+  transition: 200ms all;
+  box-sizing: border-box;
+  position: relative;
+  width: 200px;
+
+  &__wrapper {
+    display: inline-block;
+    position: relative;
+  }
+
+  & > input {
+    vertical-align: top;
+    border: none;
+    outline: none;
+    width: 100%;
+    padding: 0;
+    background-color: transparent;
+    color: $input-color;
+    color: var(--qui-input-color);
+  }
+
+  &__size {
+    &-large {
+      height: 36px;
+      padding: 9px 12px;
+    }
+
+    &-middle {
+      height: 32px;
+      padding: 7px 12px;
+    }
+
+    &-small {
+      height: 28px;
+      padding: 6px 8px;
+    }
+  }
+
+  &__affix {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    color: #aaaaaa;
+    margin-top: -7px;
+    font-size: 14px;
+    line-height: 1;
+  }
+
+  &__prefix {
+    position: absolute;
+    left: 10px;
+    color: #aaaaaa;
+    font-size: 14px;
+    line-height: 1;
+
+    &-padding {
+      padding-left: 30px;
+    }
+  }
+
+  &__suffix {
+    position: absolute;
+    right: 10px;
+    color: #aaaaaa;
+    font-size: 14px;
+    line-height: 1;
+
+    &-padding {
+      padding-right: 30px;
+    }
+  }
+
+  &__addon {
+    background-color: $input-addon-bg;
+    background-color: var(--qui-input-addon-bg);
+    border: 1px solid $input-border;
+    border: 1px solid var(--qui-input-border);
+    font-size: 13px;
+    color: $input-color;
+    color: var(--qui-input-color);
+
+    &Before {
+      border-right: 0;
+      border-top-left-radius: 2px;
+      border-bottom-left-radius: 2px;
+
+      &-radius {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+    }
+
+    &After {
+      border-left: 0;
+      border-top-right-radius: 2px;
+      border-bottom-right-radius: 2px;
+
+      &-radius {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+    }
+  }
+
+  &-focus {
+    border-color: $primary6;
+    border-color: var(--qui-primary6);
+    box-shadow: 0 0 0 3px $shadowColor;
+    box-shadow: 0 0 0 3px var(--shadowColor);
+
+    &-error {
+      box-shadow: 0 0 0 3px color($error a(30%));
+    }
+  }
+
+  &-hover {
+    &:hover {
+      border-color: $primary6;
+      border-color: var(--qui-primary6);
+    }
+  }
+
+  &-error {
+    border-color: $error;
+  }
+
+  &-disabled {
+    background-color: $input-disabled-bg;
+    background-color: var(--qui-input-disabled-bg);
+    cursor: not-allowed;
+    color: #cccccc;
+
+    & > input {
+      cursor: not-allowed;
+      background-color: $input-disabled-bg;
+      background-color: var(--qui-input-disabled-bg);
+      color: $input-disabled-color;
+      color: var(--qui-input-disabled-color);
+
+      &::placeholder {
+        color: $input-disabled-color;
+        color: var(--qui-input-disabled-color);
+      }
+    }
+
+    &::placeholder {
+      color: $input-disabled-color;
+      color: var(--qui-input-disabled-color);
+    }
+  }
+
+  &__errorText {
+    position: absolute;
+    line-height: 20px;
+    color: $error;
+    font-size: 12px;
+    left: 0;
+    bottom: -20px;
+  }
+}
+
+.qui-textarea {
+  resize: vertical;
+  line-height: 1.5;
+  width: 100%;
+  border-radius: 2px;
+  background-color: $input-bg;
+  background-color: var(--qui-input-bg);
+  color: $input-color;
+  color: var(--qui-input-color);
+  border: 1px solid $input-border;
+  border: 1px solid var(--qui-input-border);
+  outline: none;
+  transition: 200ms all, height 0s;
+  padding: 4px 12px;
+
+  &:disabled {
+    background-color: $input-disabled-bg;
+    background-color: var(--qui-input-disabled-bg);
+    cursor: not-allowed;
+    color: #cccccc;
+
+    &::placeholder {
+      color: #cccccc;
+    }
+  }
+
+  &__wrapper {
+    position: relative;
+    width: 100%;
+    display: inline-block;
+  }
+
+  &__clean {
+    position: absolute;
+    right: 8px;
+    color: #cccccc;
+    top: 8px;
+    line-height: normal;
+    transition: all 0.3s;
+    cursor: pointer;
+    font-size: 13px;
+
+    &:hover {
+      color: color(#555555 a(70%));
+    }
+
+    &-padding {
+      padding-right: 22px;
+    }
+  }
+
+  &-focus {
+    &:focus {
+      border-color: $primary6;
+      border-color: var(--qui-primary6);
+      box-shadow: 0 0 0 3px $shadowColor;
+      box-shadow: 0 0 0 3px var(--shadowColor);
+    }
+  }
+
+  &-error {
+    border-color: $error;
+
+    &:focus {
+      box-shadow: 0 0 0 3px color($error a(30%));
+    }
+  }
+
+  &__errorText {
+    position: absolute;
+    line-height: 20px;
+    color: $error;
+    font-size: 12px;
+    left: 0;
+    bottom: -20px;
+  }
+}

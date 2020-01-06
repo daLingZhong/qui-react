@@ -1,0 +1,82 @@
+@import '@/styles/var.scss';
+
+$breadcrumb-color: #8a8b8c;
+$breadcrumb-item-size: 13px;
+$breadcrumb-last: #2a2b2c;
+
+.$(prefix)-breadcrumb {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: $breadcrumb-item-size;
+
+  &__menu {
+    margin-top: 5px;
+    line-height: 24px;
+    padding: 5px 0;
+    outline: none;
+  }
+
+  &-item {
+    color: $breadcrumb-color;
+    color: var(--qui-breadcrumb-color);
+
+    span {
+      display: inline-block;
+      height: 18px;
+    }
+
+    &-arrow {
+      transition: all 0.3s;
+
+      &-active {
+        transform: rotate(180deg) translateY(5px);
+      }
+    }
+
+    &-slide {
+      &-enter,
+      &-enter-active {
+        animation: slideUpIn 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86);
+        animation-fill-mode: both;
+      }
+
+      &-exit,
+      &-exit-active {
+        animation: slideUpOut 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86);
+        animation-fill-mode: both;
+      }
+    }
+
+    a {
+      text-decoration: none;
+      transition: color 0.3s;
+      color: $breadcrumb-color;
+      color: var(--qui-breadcrumb-color);
+
+      &:hover {
+        color: $breadcrumb-color;
+        color: var(--qui-breadcrumb-color);
+        text-decoration: underline;
+      }
+    }
+
+    &-separator {
+      margin: 0px 4px;
+      min-width: 14px;
+      text-align: center;
+      color: $breadcrumb-color;
+      color: var(--qui-breadcrumb-color);
+    }
+
+    &:last-child {
+      color: $breadcrumb-last;
+      color: var(--qui-breadcrumb-last);
+    }
+
+    &:last-child &-separator {
+      display: none;
+    }
+  }
+}

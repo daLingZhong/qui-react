@@ -1,0 +1,121 @@
+@import './color.scss';
+@import './var.scss';
+
+:root {
+  --qui-primary1: #e6f7ff;
+  --qui-primary2: #bde9ff;
+  --qui-primary3: #94d8ff;
+  --qui-primary4: #6bc4ff;
+  --qui-primary5: #42adff;
+  --qui-primary6: #1a91f9;
+  --qui-primary7: #0b6fd4;
+  --qui-primary8: #0051ad;
+  --qui-primary9: #003b87;
+  --qui-primary10: #002761;
+  --waveColor: #1a91f9;
+  --shadowColor: #1a91f94d;
+  --buttonNormalHoverColor: #1a91f91a;
+
+  --qui-common-title: #3a3b3c;
+  --qui-common-content: #6a6b6c;
+  --qui-common-close-button: #aaabac;
+  --qui-common-close-button-hover: rgb(102, 103, 103);
+
+  --qui-table-hover: #e6f7ff;
+  --qui-table-thead-bg: #f1f2f3;
+  --qui-table-thead-color: #3a3b3c;
+  --qui-table-tr-bg: #fff;
+  --qui-table-tr-color: #6a6b6c;
+  --qui-table-border: #e6e7e8;
+  --qui-table-thead-hover: rgba(106, 107, 108, 0.1);
+  --qui-table-expanded: #e6e7e8;
+  --qui-table-filter: rgba(106, 107, 108, 0.1);
+  --qui-table-filter-wrapper: #fff;
+  --qui-table-header-bg: #fff;
+  --qui-table-footer-bg: #f2f2f2;
+
+  --qui-card-bg: #fff;
+  --qui-card-border: #d9d9d9;
+
+  --qui-timeline-bg: #d8d8d8;
+
+  --qui-tabs-bg: #fff;
+  --qui-tabs-title-color: #5a5b5c;
+  --qui-tabs-disabled-color: #9a9b9c;
+  --qui-tabs-border: #e4e6e8;
+  --qui-tabs-card-bg: #fafafa;
+  --qui-tabs-card-active-bg: #fff;
+
+  --qui-button-color: #fff;
+  --qui-button-normal-bg: #fff;
+  --qui-button-normal-border: #e6e7e8;
+  --qui-button-normal-color: #2a2b2c;
+  --qui-button-disabled-bg: #c6c7c8;
+  --qui-button-disabled-color: #fff;
+  --qui-button-disabled-hollow-bg: #f6f7f8;
+  --qui-button-disabled-hollow-border: #e6e7e8;
+  --qui-button-disabled-hollow-color: #8a8b8c;
+  --qui-button-loading: #fff;
+  --qui-button-loading-hollow: #2a2b2c;
+
+  --qui-menu-bg: #fff;
+  --qui-menu-color: #5a5b5c;
+  --qui-menu-hover: #bde9ff;
+  --qui-menu-active: #e6f7ff;
+  --qui-menu-disabled: #cccccc;
+
+  --qui-checkbox-bg: #fff;
+  --qui-checkbox-border: #d9d9d9;
+  --qui-checkbox-checked: #fff;
+  --qui-checkbox-color: #555555;
+  --qui-checkbox-disabled-border: #d9d9d9;
+  --qui-checkbox-disabled-bg: #f1efef;
+  --qui-checkbox-disabled-checked-bg: #f1efef;
+  --qui-checkbox-disabled-checked-color: #d9d9d9;
+  --qui-checkbox-disabled-checked-border: #d9d9d9;
+
+  --qui-radio-border: #e4e6e8;
+
+  --qui-tooltip-bg: rgba(17, 17, 17, 0.8);
+
+  --qui-select-bg: #fff;
+  --qui-select-color: #5a5b5c;
+  --qui-select-border: #e6e7e8;
+  --qui-select-disabled: #f4f4f4;
+  --qui-select-tag-border: #e4e6e8;
+  --qui-select-tag-bg: #fafafa;
+
+  --qui-modal-border: #e6e7e8;
+  --qui-modal-bg: #fff;
+
+  --qui-drawer-bg: #fff;
+  --qui-drawer-border: #e8e8e8;
+
+  --qui-input-bg: #fff;
+  --qui-input-color: #555555;
+  --qui-input-border: #e4e6e8;
+  --qui-input-addon-bg: #fafafa;
+  --qui-input-disabled-bg: #f4f4f4;
+  --qui-input-disabled-color: #cccccc;
+
+  --qui-page-bg: #fff;
+  --qui-page-disabled-bg: #f4f4f4;
+  --qui-page-disabled-color: #cccccc;
+
+  --qui-breadcrumb-color: #8a8b8c;
+  --qui-breadcrumb-last: #2a2b2c;
+}
+
+html {
+  box-sizing: border-box;
+}
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei',
+    'Helvetica Neue', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+}

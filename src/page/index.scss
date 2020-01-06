@@ -1,0 +1,20 @@
+html {
+  --bg: #f6f7f8;
+  --color: #000;
+}
+
+html,
+body {
+  height: 100%;
+  background-color: var(--bg);
+  color: var(--color);
+}
+
+a {
+  color: var(--color);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}

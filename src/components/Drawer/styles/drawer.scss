@@ -1,0 +1,296 @@
+@import '@/styles/index.scss';
+@import '../../Modal/styles/modal.scss';
+
+$shadow-color: rgba(0, 0, 0, 0.15);
+$ease-base-out: cubic-bezier(0.7, 0.3, 0.1, 1);
+$drawer-bg: #fff;
+$drawer-border: #e8e8e8;
+
+.$(prefix)-drawer {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  pointer-events: none;
+  transition: transform 0.3s $ease-base-out;
+
+  &__mask {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0.65);
+    height: 100%;
+  }
+
+  &--fade-enter &__mask,
+  &--fade-enter-active &__mask,
+  &--fade-enter-done &__mask {
+    pointer-events: auto;
+    transition: none;
+    opacity: 0.3;
+    animation: DrawerMaskFadeIn 0.3s $ease-base-out;
+  }
+
+  &--fade-exit &__mask,
+  &--fade-exit-active &__mask,
+  &--fade-exit-done &__mask {
+    animation: DrawerMaskFadeOut 0.3s $ease-base-out;
+  }
+
+  &__wrapper {
+    position: absolute;
+    background-color: white;
+    transition: width 0.3s $ease-base-out, height 0.3s $ease-base-out;
+
+    &[data-drawer-placement='right'],
+    &[data-drawer-placement='left'] {
+      height: 100%;
+    }
+
+    &[data-drawer-placement='left'] {
+      left: -100%;
+    }
+
+    &[data-drawer-placement='right'] {
+      right: -100%;
+    }
+
+    &[data-drawer-placement='top'],
+    &[data-drawer-placement='bottom'] {
+      width: 100%;
+    }
+
+    &[data-drawer-placement='top'] {
+      top: -100%;
+    }
+    &[data-drawer-placement='bottom'] {
+      bottom: -100%;
+    }
+  }
+
+  &--fade-enter &__wrapper[data-drawer-placement='right'],
+  &--fade-enter-active &__wrapper[data-drawer-placement='right'],
+  &--fade-enter-done &__wrapper[data-drawer-placement='right'] {
+    pointer-events: auto;
+    animation: DrawerRightFadeIn 0.3s $ease-base-out;
+    animation-fill-mode: both;
+    box-shadow: 2px 0 8px $shadow-color;
+  }
+
+  &--fade-exit &__wrapper[data-drawer-placement='right'],
+  &--fade-exit-active &__wrapper[data-drawer-placement='right'] {
+    animation: DrawerRightFadeOut 0.3s $ease-base-out;
+  }
+
+  &--fade-enter &__wrapper[data-drawer-placement='left'],
+  &--fade-enter-active &__wrapper[data-drawer-placement='left'],
+  &--fade-enter-done &__wrapper[data-drawer-placement='left'] {
+    pointer-events: auto;
+    animation: DrawerLeftFadeIn 0.3s $ease-base-out;
+    animation-fill-mode: both;
+    box-shadow: -2px 0 8px $shadow-color;
+  }
+
+  &--fade-exit &__wrapper[data-drawer-placement='left'],
+  &--fade-exit-active &__wrapper[data-drawer-placement='left'] {
+    animation: DrawerLeftFadeOut 0.3s $ease-base-out;
+  }
+
+  &--fade-enter &__wrapper[data-drawer-placement='top'],
+  &--fade-enter-active &__wrapper[data-drawer-placement='top'],
+  &--fade-enter-done &__wrapper[data-drawer-placement='top'] {
+    pointer-events: auto;
+    animation: DrawerTopFadeIn 0.3s $ease-base-out;
+    animation-fill-mode: both;
+    box-shadow: 0 -2px 8px $shadow-color;
+  }
+
+  &--fade-exit &__wrapper[data-drawer-placement='top'],
+  &--fade-exit-active &__wrapper[data-drawer-placement='top'] {
+    animation: DrawerTopFadeOut 0.3s $ease-base-out;
+  }
+
+  &--fade-enter &__wrapper[data-drawer-placement='bottom'],
+  &--fade-enter-active &__wrapper[data-drawer-placement='bottom'],
+  &--fade-enter-done &__wrapper[data-drawer-placement='bottom'] {
+    pointer-events: auto;
+    animation: DrawerBottomFadeIn 0.3s $ease-base-out;
+    animation-fill-mode: both;
+    box-shadow: 0 2px 8px $shadow-color;
+  }
+
+  &--fade-exit &__wrapper[data-drawer-placement='bottom'],
+  &--fade-exit-active &__wrapper[data-drawer-placement='bottom'] {
+    animation: DrawerBottomFadeOut 0.3s $ease-base-out;
+  }
+
+  &__header {
+    position: relative;
+    padding: 16px 24px;
+    border-bottom: 1px solid $drawer-border;
+    border-bottom: 1px solid var(--qui-drawer-border);
+    border-radius: 4px 4px 0 0;
+    color: $common-title;
+    color: var(--qui-common-title);
+  }
+
+  &__header-no-title {
+    color: $common-title;
+    color: var(--qui-common-title);
+  }
+
+  &__title {
+    padding-right: 40px;
+    word-wrap: break-word;
+    margin: 0;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  &__close {
+    position: absolute;
+    top: 6px;
+    right: 5px;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    font-family: Arial;
+    font-size: 18px;
+    color: $common-close-button;
+    color: var(--qui-common-close-button);
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    transition: color 0.3s;
+
+    &:active,
+    &:hover {
+      outline: 0;
+      text-decoration: none;
+    }
+    &:hover {
+      color: $commont-close-button-hover;
+      color: var(--qui-common-close-button-hover);
+    }
+  }
+
+  &__content {
+    overflow: auto;
+    height: 100%;
+    background-color: $drawer-bg;
+    background-color: var(--qui-drawer-bg);
+    color: $common-content;
+    color: var(--qui-common-content);
+  }
+
+  &__body {
+    padding: 32px;
+    font-size: 14px;
+    line-height: 1.5;
+    word-wrap: break-word;
+    overflow: auto;
+  }
+
+  &__footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    border-top: 1px solid $drawer-border;
+    border-top: 1px solid var(--qui-drawer-border);
+    padding: 10px 16px;
+    text-align: right;
+  }
+}
+
+@keyframes DrawerMaskFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.3;
+  }
+}
+
+@keyframes DrawerMaskFadeOut {
+  0% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes DrawerRightFadeIn {
+  0% {
+    right: -100%;
+  }
+  100% {
+    right: 0;
+  }
+}
+@keyframes DrawerRightFadeOut {
+  0% {
+    right: 0;
+  }
+  100% {
+    right: -100%;
+  }
+}
+
+@keyframes DrawerLeftFadeIn {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 0;
+  }
+}
+@keyframes DrawerLeftFadeOut {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: -100%;
+  }
+}
+
+@keyframes DrawerTopFadeIn {
+  0% {
+    top: -100%;
+  }
+  100% {
+    top: 0;
+  }
+}
+@keyframes DrawerTopFadeOut {
+  0% {
+    top: 0;
+  }
+  100% {
+    top: -100%;
+  }
+}
+
+@keyframes DrawerBottomFadeIn {
+  0% {
+    bottom: -100%;
+  }
+  100% {
+    bottom: 0;
+  }
+}
+@keyframes DrawerBottomFadeOut {
+  0% {
+    bottom: 0;
+  }
+  100% {
+    bottom: -100%;
+  }
+}

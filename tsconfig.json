@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "target": "es5",
+    "types": ["node"],
+    "lib": ["es5", "es6", "dom"], //https://stackoverflow.com/questions/39416691/webpack-ts2304-cannot-find-name-map-set-promise
+    "jsx": "react",
+    "module": "commonjs",
+    "outDir": "dist/types",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "strictNullChecks": false,
+    "declaration": true,
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.js", "src/**/*.jsx"],
+  "exclude": ["node_modules"]
+}

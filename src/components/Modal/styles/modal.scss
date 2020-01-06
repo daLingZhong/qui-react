@@ -1,0 +1,174 @@
+@import '@/styles/var.scss';
+@import '@/styles/color.scss';
+
+$modal-border: #e6e7e8;
+$modal-bg: #fff;
+
+.$(prefix)-modal {
+  &--animate-enter,
+  &--animate-enter-active {
+    animation: fadeIn 0.5s cubic-bezier(0.08, 0.82, 0.17, 1);
+  }
+
+  &--animate-exit,
+  &--animate-exit-active {
+    animation: fadeOut 0.5s cubic-bezier(0.08, 0.82, 0.17, 1);
+  }
+
+  &__mask {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.45);
+    transition: all 0.3s;
+    z-index: 1010;
+  }
+
+  &__document {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1010;
+
+    &-center {
+      text-align: center;
+
+      &::before {
+        display: inline-block;
+        width: 0;
+        height: 100%;
+        vertical-align: middle;
+        content: '';
+      }
+    }
+  }
+
+  &__wrapper {
+    background-color: $modal-bg;
+    background-color: var(--qui-modal-bg);
+    top: 200px;
+    margin: 0 auto;
+    position: relative;
+    border-radius: 2px;
+
+    &--animate-enter,
+    &--animate-enter-active {
+      animation: scaleIn 0.3s cubic-bezier(0.08, 0.82, 0.17, 1);
+    }
+
+    &--animate-exit,
+    &--animate-exit-active {
+      animation: scaleOut 0.3s cubic-bezier(0.08, 0.82, 0.17, 1);
+    }
+
+    &-center {
+      top: 0;
+      display: inline-block;
+      text-align: left;
+      vertical-align: middle;
+    }
+  }
+
+  &__header {
+    height: 55px;
+    box-sizing: border-box;
+    border-bottom: 1px solid $modal-border;
+    border-bottom: 1px solid var(--qui-modal-border);
+    width: 100%;
+    padding: 16px 20px;
+
+    &-title {
+      font-size: 16px;
+      color: $common-title;
+      color: var(--qui-common-title);
+      font-weight: 500;
+      display: inline-block;
+    }
+
+    &-close {
+      position: absolute;
+      right: 12px;
+      top: 12px;
+
+      &Icon {
+        font-size: 10px;
+        color: $common-close-button;
+        color: var(--qui-common-close-button);
+        transition: color 0.3s;
+        cursor: pointer;
+
+        &:hover {
+          color: $commont-close-button-hover;
+          color: var(--qui-common-close-button-hover);
+        }
+      }
+    }
+  }
+
+  &__content {
+    min-height: 100px;
+    padding: 16px 20px;
+    font-size: 13px;
+    color: $common-content;
+    color: var(--qui-common-content);
+  }
+
+  &__footer {
+    padding: 16px 20px;
+    height: 70px;
+    border-top: 1px solid $modal-border;
+    border-top: 1px solid var(--qui-modal-border);
+  }
+}
+
+.$(prefix)-modal-info {
+  &__document {
+    padding: 10px;
+  }
+
+  &__icon {
+    font-size: 25px;
+    margin-right: 8px;
+    vertical-align: middle;
+
+    &-info {
+      color: $info;
+    }
+
+    &-success {
+      color: $success;
+    }
+
+    &-warning {
+      color: $warning;
+    }
+
+    &-error {
+      color: $error;
+    }
+  }
+
+  &__title {
+    vertical-align: middle;
+    font-size: 16px;
+    color: $common-title;
+    color: var(--qui-common-title);
+  }
+
+  &__content {
+    min-height: 50px;
+    margin-top: 10px;
+    font-size: 13px;
+    color: $common-content;
+    color: var(--qui-common-content);
+  }
+
+  &__footer {
+    text-align: right;
+    margin-top: 8px;
+  }
+}

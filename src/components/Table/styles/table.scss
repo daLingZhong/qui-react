@@ -1,0 +1,421 @@
+@import '@/styles/var.scss';
+@import '@/styles/color.scss';
+
+@define-mixin clearPaddingAndWidth {
+  width: 12px;
+  padding-right: 0 !important;
+}
+
+@define-mixin tableHeaderFooter {
+  padding: 14px 16px;
+  color: #2a2b2c;
+  width: 100%;
+}
+
+$table-bg: #f2f2f2;
+$table-thead-bg: #f1f2f3;
+$table-tr-bg: #fff;
+$table-border: #e6e7e8;
+$table-thead-hover: rgba(106, 107, 108, 0.3);
+$table-expanded: #e6e7e8;
+$table-filter: rgba(106, 107, 108, 0.1);
+$table-filter-wrapper: #fff;
+$table-header-bg: #fff;
+$table-footer-bg: #f2f2f2;
+$table-hover: #e6f7ff;
+
+.$(prefix)-table {
+  border-collapse: collapse;
+  line-height: 24px;
+  width: 100%;
+
+  &__wrapper {
+    width: 100%;
+    text-align: left;
+  }
+
+  & > thead {
+    background-color: $table-thead-bg;
+    background-color: var(--qui-table-thead-bg);
+    color: $common-title;
+    color: var(--qui-common-title);
+    font-size: 14px;
+  }
+
+  &__centerAlign {
+    text-align: center;
+  }
+
+  & > tbody > tr {
+    background-color: $table-tr-bg;
+    background-color: var(--qui-table-tr-bg);
+    color: $common-content;
+    color: var(--qui-common-content);
+    font-size: 13px;
+    transition-property: background-color, color;
+    transition-duration: 0.3s;
+
+    &:hover {
+      background-color: $table-hover;
+      background-color: var(--qui-table-hover);
+    }
+  }
+
+  & > thead > tr > th {
+    position: relative;
+  }
+
+  & > thead > tr > th,
+  & > thead > tr > td,
+  & > tbody > tr > th,
+  & > tbody > tr > td,
+  & > tfoot > tr > th,
+  & > tfoot > tr > td {
+    transition-property: background-color, color;
+    transition-duration: 0.3s;
+    padding: 8px 16px;
+    border: none;
+  }
+
+  &--small {
+    & > thead > tr > th,
+    & > thead > tr > td,
+    & > tbody > tr > th,
+    & > tbody > tr > td,
+    & > tfoot > tr > th,
+    & > tfoot > tr > td {
+      padding: 4px 8px;
+    }
+  }
+
+  &--underline {
+    & > thead > tr > th,
+    & > thead > tr > td,
+    & > tbody > tr > th,
+    & > tbody > tr > td,
+    & > tfoot > tr > th,
+    & > tfoot > tr > td {
+      border-top: none;
+      border-right: none;
+      border-left: none;
+      border-bottom: 1px solid $table-border;
+      border-bottom: 1px solid var(--qui-table-border);
+    }
+  }
+
+  &--bordered {
+    & > thead > tr > th,
+    & > thead > tr > td,
+    & > tbody > tr > th,
+    & > tbody > tr > td,
+    & > tfoot > tr > th,
+    & > tfoot > tr > td {
+      border: 1px solid $table-border;
+      border: 1px solid var(--qui-table-border);
+    }
+  }
+
+  &__abnormal {
+    height: 73px;
+    font-size: 14px;
+
+    & > td {
+      text-align: center !important;
+    }
+
+    &Icon {
+      margin-right: 8px;
+      color: $primary6;
+      color: var(--qui-primary6);
+      font-size: 20px;
+      vertical-align: middle;
+      display: inline-block;
+    }
+
+    &-loading {
+      color: $primary6;
+      color: var(--qui-primary6);
+    }
+
+    &-nodata {
+      color: $serious;
+    }
+
+    &-error {
+      color: $error;
+    }
+
+    &-dotting {
+      display: inline-block;
+      min-width: 2px;
+      min-height: 2px;
+      box-shadow: 2px 0 currentColor, 6px 0 currentColor, 10px 0 currentColor;
+      animation: dot 3s infinite step-start both;
+      &:before {
+        content: '.....';
+      }
+      &::before {
+        content: '';
+      }
+    }
+  }
+
+  &__sideArrow {
+    vertical-align: middle;
+    font-size: 12px;
+    margin-right: 4px;
+    cursor: pointer;
+    color: #aaaaaa;
+    display: inline-block;
+    transform: rotate(90deg);
+
+    &-active {
+      transform: rotate(0deg);
+    }
+  }
+
+  &__sortArrow {
+    display: inline-block;
+    margin-left: 4px;
+    position: relative;
+  }
+
+  &__sortItem {
+    cursor: pointer;
+    transition: all 0.3s;
+    user-select: none;
+
+    &-active {
+      background-color: $table-thead-hover;
+      background-color: var(--qui-table-thead-hover);
+    }
+
+    &-td-active {
+      background-color: rgba(164, 170, 176, 0.07);
+    }
+
+    &:hover {
+      background-color: $table-thead-hover;
+      background-color: var(--qui-table-thead-hover);
+    }
+  }
+
+  &__topArrow {
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+
+    &-up {
+      position: absolute;
+      top: -10px;
+      border-bottom: 4px solid #999999;
+    }
+
+    &-down {
+      position: absolute;
+      bottom: -1px;
+      border-top: 4px solid #999999;
+    }
+
+    &-topActive {
+      border-bottom-color: $primary6;
+      border-bottom-color: var(--qui-primary6);
+    }
+
+    &-bottomActive {
+      border-top-color: $primary6;
+      border-top-color: var(--qui-primary6);
+    }
+  }
+
+  &-none {
+    display: none;
+  }
+
+  &__expanded {
+    @add-mixin clearPaddingAndWidth;
+
+    &Wrapper {
+      background-color: $table-expanded !important;
+      background-color: var(--qui-table-expanded) !important;
+
+      & > td {
+        padding: 0 !important;
+      }
+    }
+  }
+
+  &__select {
+    @add-mixin clearPaddingAndWidth;
+  }
+
+  &__resizeLine {
+    width: 8px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: -5px;
+    cursor: col-resize;
+  }
+
+  &__filter {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: $table-filter;
+    background-color: var(--qui-table-filter);
+    height: 100%;
+    width: 30px;
+    font-size: 12px;
+    color: #999999;
+    text-align: center;
+    line-height: 40px;
+    transition: all 0.3s;
+    cursor: pointer;
+    outline: none;
+
+    &-small {
+      line-height: 32px;
+    }
+
+    &:hover,
+    &-filtering {
+      color: #fff !important;
+      background-color: $table-thead-hover;
+      background-color: var(--qui-table-thead-hover);
+    }
+
+    &-active {
+      color: $primary6;
+      color: var(--qui-primary6);
+    }
+
+    &Wrapper {
+      background-color: $table-filter-wrapper;
+      background-color: var(--qui-table-filter-wrapper);
+      color: $common-title;
+      color: var(--qui-common-title);
+      position: absolute;
+      right: 0;
+      margin-top: 8px;
+      min-width: 120px;
+      max-height: 0;
+      opacity: 0;
+      transition: all 0.5s;
+      box-shadow: 0px 0px 4px 0px color(#000 a(50%));
+      cursor: default;
+      font-weight: 400;
+      overflow: hidden;
+
+      &-active {
+        opacity: 1;
+        max-height: 2000px;
+      }
+    }
+
+    &Content {
+      color: $primary6;
+      color: var(--qui-primary6);
+      line-height: 32px;
+
+      & > label {
+        cursor: pointer;
+        width: 100%;
+        display: inline-block;
+        text-align: left;
+        padding: 0 14px;
+        transition: all 0.5s;
+
+        & > input {
+          margin-right: 8px;
+        }
+
+        &:hover {
+          background-color: $table-hover;
+          background-color: var(--qui-table-hover);
+        }
+
+        &:first-child {
+          margin-top: 8px;
+        }
+      }
+    }
+
+    &ButtonGroup {
+      border-top: 1px solid #e6e7e8;
+      line-height: 30px;
+      margin-top: 12px;
+
+      & > span {
+        color: $primary6;
+        color: var(--qui-primary6);
+        width: 50%;
+        display: inline-block;
+        font-size: 13px;
+        cursor: pointer;
+        transition: all 0.5s;
+
+        &:hover {
+          background-color: $table-hover;
+          background-color: var(--qui-table-hover);
+        }
+      }
+    }
+  }
+
+  &__header {
+    @add-mixin tableHeaderFooter;
+    font-weight: 700;
+    font-size: 16px;
+    background-color: $table-header-bg;
+    background-color: var(--qui-table-header-bg);
+    color: $common-title;
+    color: var(--qui-common-title);
+    border: 1px solid $table-border;
+    border: 1px solid var(--qui-table-border);
+    border-bottom: none;
+
+    &-small {
+      padding: 7px 8px;
+    }
+  }
+
+  &__footer {
+    @add-mixin tableHeaderFooter;
+    font-size: 14px;
+    color: $common-title;
+    color: var(--qui-common-title);
+    background-color: $table-footer-bg;
+    background-color: var(--qui-table-footer-bg);
+
+    &-small {
+      padding: 7px 8px;
+    }
+  }
+}
+
+.$(prefix)-edTable {
+  &__icon {
+    color: #6a6b6c;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin: 0 4px;
+
+    &:hover {
+      color: $primary6;
+      color: var(--qui-primary6);
+    }
+
+    &-disabled {
+      pointer-events: none;
+      color: #c4c4c4;
+    }
+  }
+
+  &__inputWrapper {
+    display: inline-block;
+    width: 0;
+    vertical-align: middle;
+  }
+}
