@@ -1,0 +1,100 @@
+@define-mixin activeClass {
+  content: '';
+  height: 40px;
+  width: 3px;
+  background-color: #000;
+  position: absolute;
+  right: 0px;
+}
+
+.sidebar {
+  &__con {
+    overflow-y: scroll;
+    height: calc(100% - 70px);
+
+    &:hover {
+      &::-webkit-scrollbar {
+        display: block;
+      }
+    }
+
+    &::-webkit-scrollbar {
+      display: none;
+      background-color: transparent;
+      width: 6px;
+      height: 6px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #999696;
+      border-radius: 10px;
+      opacity: 0.5;
+
+      &:hover {
+        background-color: #7e7b7b;
+      }
+    }
+  }
+
+  &__logo {
+    line-height: 70px;
+    padding-left: 60px;
+    font-size: 16px;
+    color: #fff;
+    height: 70px;
+
+    & > span {
+      font-size: 36px;
+      margin-right: 16px;
+    }
+  }
+
+  &__link {
+    margin-top: 30px;
+    font-size: 14px;
+    line-height: 40px;
+    color: #fff;
+
+    & > ul {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+
+      &:last-child {
+        margin-bottom: 20px;
+      }
+    }
+  }
+
+  &__title {
+    margin-left: 60px;
+    margin-bottom: 8px;
+  }
+
+  &__route {
+    padding-left: 80px;
+    line-height: 40px;
+    margin-bottom: 4px;
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    position: relative;
+    transition: all 0.3s;
+
+    &-active {
+      background-color: #0c5ce0;
+
+      &::after {
+        @add-mixin activeClass;
+      }
+    }
+
+    &:hover {
+      background-color: #0c5ce0;
+
+      &::after {
+        @add-mixin activeClass;
+      }
+    }
+  }
+}

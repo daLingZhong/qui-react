@@ -1,7 +1,11 @@
 {
   "name": "qui-react",
   "version": "1.0.0",
-  "description": "Stander React UI Components created and maintains by WoquTech, code by ling.zhong",
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.woqutech.com:ui-module/qui-react.git"
+  },
+  "description": "Stander React UI Components created and maintains by WoquTech",
   "main": "dist/main.js",
   "typings": "dist/types/components/index.d.ts",
   "files": [
@@ -27,7 +31,7 @@
     "react-dom": "16.8.3",
     "react-router": "5.0.0",
     "react-router-dom": "5.0.0",
-    "react-transition-group": "4.0.0"
+    "react-transition-group": "4.3.0"
   },
   "devDependencies": {
     "@ant-design/colors": "3.2.2",
@@ -97,6 +101,6 @@
     "webpack-cli": "3.2.3",
     "webpack-dev-server": "3.2.0"
   },
-  "author": "ling.zhong",
+  "author": "woqutech",
   "license": "ISC"
 }

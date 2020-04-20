@@ -1,38 +1,39 @@
 import * as React from 'react'
 import Switch from '.'
+import DemoCard from '@/page/components/DemoCard'
 
 const ExamplePage = () => {
-  const test = React.useRef(null)
-
-  const focusSwitch = () => {
-    test.current.focus()
-  }
-
   return (
     <div>
-      <h2>Switch Example</h2>
-      <a href="https://lanhuapp.com/web/#/item/project/board?pid=0725176d-23e2-469a-97d0-c5567662d355">UI Design</a>
-      <br />
-      <h3>Size</h3>
-      <h4>small</h4>
-      <button onClick={focusSwitch}>focus</button>
-      <Switch size="small" isChecked={true} ref={test} />
-      <br />
-      <h4>middle</h4>
-      <Switch />
-      <br />
-      <h4>large</h4>
-      <Switch size="large" isChecked={true} />
-      <h3>Change</h3>
-      <Change />
-      <h3>Disabled</h3>
-      <Disabled />
-      <h3>CheckContent</h3>
-      <CheckContent />
-      <h3>Loading</h3>
-      <Loading />
-      <h3>Customize Wave Color</h3>
-      <Customize />
+      <DemoCard title="基本" des="最简单的用法。" id="components-switch-demo-basic">
+        <Change />
+      </DemoCard>
+
+      <DemoCard title="尺寸" des="三种大小。" id="components-switch-demo-size">
+        <Switch size="large" isChecked={true} />
+        <br />
+        <br />
+        <Switch />
+        <br />
+        <br />
+        <Switch size="small" isChecked={true} />
+      </DemoCard>
+
+      <DemoCard title="禁用" des="禁用状态。" id="components-switch-demo-disabled">
+        <Disabled />
+      </DemoCard>
+
+      <DemoCard title="内容自定义" des="可以自定义开关的背景内容。" id="components-switch-demo-content">
+        <CheckContent />
+      </DemoCard>
+
+      <DemoCard title="加载中" des="加载中状态。" id="components-switch-demo-loading">
+        <Loading />
+      </DemoCard>
+
+      <DemoCard title="自定义" des="自定义聚焦背景色。" id="components-switch-demo-wave">
+        <Customize />
+      </DemoCard>
     </div>
   )
 }

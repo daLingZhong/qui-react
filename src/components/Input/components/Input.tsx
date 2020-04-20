@@ -5,7 +5,7 @@ import { noop } from 'lodash'
 import Icon from '@/components/Icon'
 
 import { IInputInter } from '../interface'
-import { clsPrefix } from '../common'
+import { clsPrefix, INPUT_RANGE } from '../common'
 
 import '../styles/input.scss'
 
@@ -48,9 +48,11 @@ const Input = React.forwardRef<{ focus: () => void; blur: () => void; select: ()
       [`${clsPrefix}__addonBefore-radius`]: !!addonBefore,
       [`${clsPrefix}__addonAfter-radius`]: !!addonAfter,
     })
-    const cus = {
+    const fixInputStyle = !!suffix || !!prefix || type === 'password' ? INPUT_RANGE[size] : undefined
+    const cus: any = {
       width: !!width ? '100%' : undefined,
       height: !!height ? '100%' : undefined,
+      float: !!addonAfter ? 'left' : undefined,
     }
 
     React.useImperativeHandle(ref, () => ({
@@ -82,7 +84,7 @@ const Input = React.forwardRef<{ focus: () => void; blur: () => void; select: ()
         className={!isHaveFix ? _className : inputClassName}
         disabled={isDisabled}
         value={value?.toString()}
-        style={{ ...cus, ...inputStyle }}
+        style={{ ...cus, ...fixInputStyle, ...inputStyle }}
       />
     )
     const addonBeforeNode =

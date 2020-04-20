@@ -1,5 +1,9 @@
 import * as React from 'react'
 
+import DemoCard from '@/page/components/DemoCard'
+import Checkbox from '@/components/Checkbox'
+import Radio from '@/components/Radio'
+
 import Table from '../Table/components/Table'
 import { TableTheme, Col, ColArray, RowSelection } from './interface'
 import EditTable from '../Table/components/EditTable'
@@ -8,44 +12,106 @@ import Input from '../Input'
 const ExampleTablePage: React.SFC = () => {
   return (
     <div>
-      <h2>Table Example</h2>
-      <a href="https://lanhuapp.com/web/#/item/project/board?pid=f689ad61-44b9-43b8-8a04-18b4be34ec65">UI Design</a>
-      <br />
-      <a href="https://lanhuapp.com/web/#/item/project/board/detail?pid=9937a2f3-0998-4b71-9cdd-7d64437f29eb&project_id=9937a2f3-0998-4b71-9cdd-7d64437f29eb&image_id=92e61ded-6899-4459-9482-281c0c7a6a09">
-        Dark UI Design
-      </a>
-      <h3>Normal</h3>
-      <Normal />
-      <h3>AbNormal</h3>
-      <AbNormal />
-      <h3>Header & Footer</h3>
-      <HeaderFooter />
-      <h3>ExpandedRow</h3>
-      <ExpandedRow />
-      <h3>Tree</h3>
-      <Tree />
-      <h3>Resizable</h3>
-      <Resizable />
-      <h3>SelectRow</h3>
-      <SelectRow />
-      <h3>Sort</h3>
-      <Sort />
-      <h3>Sever Sort</h3>
-      <ServerSort />
-      <h3>Filter</h3>
-      <Filter />
-      <h3>Filter: Customize</h3>
-      <FilterCustomize />
-      <h3>MergeCol</h3>
-      <MergeCol />
-      <h3>MergeRow</h3>
-      <MergeRow />
-      <h3>Fix Header</h3>
-      <FixHeader />
-      <h3>EditTable</h3>
-      <EditTableNormal />
-      <h3>EditTable: Customize</h3>
-      <EditTableCustomize />
+      <DemoCard
+        title="基本"
+        des="支持自定义渲染表格头或单元格，直接传入渲染函数即可。"
+        id="components-table-demo-basic"
+      >
+        <Normal />
+      </DemoCard>
+
+      <DemoCard
+        title="异常状态"
+        des="可自定义异常状态下提示文案或者自行传入渲染函数，优先级: error > loading > nodata"
+        id="components-table-demo-abnormal"
+      >
+        <AbNormal />
+      </DemoCard>
+
+      <DemoCard title="表格头尾" des="可自定义表格头部和尾部" id="components-table-demo-header">
+        <HeaderFooter />
+      </DemoCard>
+
+      <DemoCard title="可展开行" des="某个行可以展开显示详细内容" id="components-table-demo-expanded">
+        <ExpandedRow />
+      </DemoCard>
+
+      <DemoCard
+        title="树状表格"
+        des="可以展示树状类型数据，遇到children字段将会自动渲染为子节点"
+        id="components-table-demo-tree"
+      >
+        <Tree />
+      </DemoCard>
+
+      <DemoCard
+        title="可伸缩列"
+        des="可以控制拖拽指定列宽度，需指定当前列的width属性才可获得伸缩功能"
+        id="components-table-demo-resize"
+      >
+        <Resizable />
+      </DemoCard>
+
+      <DemoCard
+        title="多选行"
+        des="可以根据内部接口选中行，可指定作为主键选择的key，如不指定则需要源数据中存在key字段。暂时无法做到父子节点的选中判断，每一行将都是独立的"
+        id="components-table-demo-checkbox"
+      >
+        <SelectRow />
+      </DemoCard>
+
+      <DemoCard title="排序" des="可以对指定列排序" id="components-table-demo-sort">
+        <Sort />
+      </DemoCard>
+
+      <DemoCard
+        title="服务端排序"
+        des="根据提供特定列名以及排序条件传递服务端排序，可以给sort字段传入true表示开启，并且通过sortOrder字段传入回调函数控制总数据"
+        id="components-table-demo-serversort"
+      >
+        <ServerSort />
+      </DemoCard>
+
+      <DemoCard
+        title="筛选"
+        des="特定列筛选，每一列必须传入唯一的Col.key，可以传入固定的需要筛选的项"
+        id="components-table-demo-filter"
+      >
+        <Filter />
+      </DemoCard>
+
+      <DemoCard title="自定义筛选" des="可以自定义更多筛选条件" id="components-table-demo-filtercus">
+        <FilterCustomize />
+      </DemoCard>
+
+      <DemoCard title="合并列" des="可合并列，合并后的列标题将会自动居中" id="components-table-demo-mergecol">
+        <MergeCol />
+      </DemoCard>
+
+      <DemoCard title="合并行" des="对特定行合并" id="components-table-demo-mergerow">
+        <MergeRow />
+      </DemoCard>
+
+      <DemoCard
+        title="冻结表头"
+        des="需要指定 column 的 width 属性，否则列头和内容可能不对齐。如果指定 width
+        不生效，请尝试建议留一列不设宽度以适应弹性布局，或者检查是否有超长连续字段破坏布局。"
+        id="components-table-demo-fixheader"
+      >
+        <FixHeader />
+      </DemoCard>
+
+      <DemoCard title="普通编辑表格" des="提供基础的表格编辑功能" id="components-table-demo-edit">
+        <EditTableNormal />
+      </DemoCard>
+
+      <DemoCard
+        title="自定义编辑表格"
+        des="自定义表格编辑功能，并可以与原生编辑功能混合使用"
+        id="components-table-demo-editcus"
+      >
+        <EditTableCustomize />
+      </DemoCard>
     </div>
   )
 }
@@ -90,49 +156,24 @@ const Normal = () => {
 
   return (
     <div>
-      <p>支持自定义渲染表格头或单元格，直接传入渲染函数即可</p>
-      <ul>
-        <li>
-          <input
-            type="checkbox"
-            checked={compact}
-            onChange={() => {
-              if (compact) {
-                setCompact(false)
-              } else {
-                setCompact(true)
-              }
-            }}
-          />
-          compact 紧凑型表格
-        </li>
-        <li>
-          <label>
-            <input
-              name="theme"
-              type="radio"
-              checked={theme === 'underline'}
-              value="underline"
-              onChange={() => {
-                setTheme('underline')
-              }}
-            />
-            underline
-          </label>
-          <label>
-            <input
-              name="theme"
-              type="radio"
-              checked={theme === 'bordered'}
-              value="bordered"
-              onChange={() => {
-                setTheme('bordered')
-              }}
-            />
-            bordered
-          </label>
-        </li>
-      </ul>
+      <Checkbox isChecked={compact} onChange={() => setCompact(!compact)}>
+        compact 紧凑型表格
+      </Checkbox>
+      <br />
+      <br />
+      <Radio.Group
+        name="test"
+        value={theme}
+        onChange={(nv) => {
+          setTheme(nv)
+        }}
+      >
+        <Radio value="underline">underline</Radio>
+        <Radio value="bordered">bordered</Radio>
+      </Radio.Group>
+      <br />
+      <br />
+
       <Table col={col} dataSource={data} small={compact} theme={theme} />
     </div>
   )
@@ -175,51 +216,17 @@ const AbNormal = () => {
 
   return (
     <div>
-      <p>可自定义异常状态下提示文案或者自行传入渲染函数，优先级: error > loading > nodata</p>
-      <ul>
-        <li>
-          <input
-            type="checkbox"
-            checked={loading}
-            onChange={() => {
-              if (loading) {
-                setLoading(false)
-              } else {
-                setLoading(true)
-              }
-            }}
-          />
-          loading
-        </li>
-        <li>
-          <input
-            type="checkbox"
-            checked={error}
-            onChange={() => {
-              if (error) {
-                setError(false)
-              } else {
-                setError(true)
-              }
-            }}
-          />
-          error
-        </li>
-        <li>
-          <input
-            type="checkbox"
-            checked={noData}
-            onChange={() => {
-              if (noData) {
-                setNodata(false)
-              } else {
-                setNodata(true)
-              }
-            }}
-          />
-          nodata
-        </li>
-      </ul>
+      <Checkbox style={{ marginRight: '10px' }} isChecked={loading} onChange={() => setLoading(!loading)}>
+        loading
+      </Checkbox>
+      <Checkbox style={{ marginRight: '10px' }} isChecked={error} onChange={() => setError(!error)}>
+        error
+      </Checkbox>
+      <Checkbox isChecked={noData} onChange={() => setNodata(!noData)}>
+        nodata
+      </Checkbox>
+      <br />
+      <br />
       <Table col={col} dataSource={data} isLoading={loading} isError={error} />
     </div>
   )
@@ -299,9 +306,6 @@ const Tree = () => {
 
   return (
     <div>
-      <p>
-        遇到<b>children</b>字段将会自动渲染为子节点
-      </p>
       <Table col={col} dataSource={data} />
     </div>
   )
@@ -344,7 +348,6 @@ const Resizable = () => {
 
   return (
     <div>
-      <p>可伸缩列,需指定当前列的width属性才可获得伸缩功能</p>
       <Table dataSource={data} col={col} isResizable={true} />
     </div>
   )
@@ -396,9 +399,6 @@ const SelectRow = () => {
 
   return (
     <div>
-      <p>
-        可指定作为主键选择的key，如不指定则需要源数据中存在key字段。暂时无法做到父子节点的选中判断，每一行将都是独立的
-      </p>
       <i>已选中 {select.length} 项</i>
       <Table col={col} dataSource={data} rowSelection={rowSelect} />
     </div>
@@ -494,7 +494,6 @@ const ServerSort = () => {
 
   return (
     <div>
-      <p>服务端排序, 可以给sort字段传入true表示开启，并且通过sortOrder字段传入回调函数控制总数据</p>
       <Table col={col} dataSource={tableData} />
     </div>
   )
@@ -544,7 +543,6 @@ const Filter = () => {
 
   return (
     <div>
-      <p>筛选表格, 每一列必须传入唯一的Col.key，可以传入固定的需要筛选的项</p>
       <Table col={col} dataSource={data} />
     </div>
   )
@@ -626,7 +624,6 @@ const FilterCustomize = () => {
 
   return (
     <div>
-      <p>自定义筛选表格</p>
       <Table col={col} dataSource={data} />
     </div>
   )
@@ -669,7 +666,6 @@ const MergeCol = () => {
 
   return (
     <div>
-      <p>可合并列，合并后的列标题将会自动居中</p>
       <Table col={col} dataSource={data} theme="bordered" />
     </div>
   )
@@ -775,7 +771,6 @@ export const EditTableNormal = () => {
 
   return (
     <div>
-      <p>可编辑表格，直接传入editable: true选项调用编辑功能</p>
       <EditTable
         dataSource={data}
         col={col}
@@ -849,7 +844,6 @@ const EditTableCustomize = () => {
 
   return (
     <div>
-      <p>支持自定义渲染编辑模式，可与自动编辑混合使用</p>
       <EditTable
         isCustomize={true}
         dataSource={data}
@@ -913,10 +907,6 @@ const FixHeader = () => {
 
   return (
     <div>
-      <p>
-        需要指定 column 的 width 属性，否则列头和内容可能不对齐。如果指定 width
-        不生效，请尝试建议留一列不设宽度以适应弹性布局，或者检查是否有超长连续字段破坏布局。
-      </p>
       <Table isFixHeader col={col} dataSource={data} scroll={{ y: '100px' }} />
     </div>
   )

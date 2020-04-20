@@ -42,17 +42,17 @@ $input-disabled-color: #cccccc;
   &__size {
     &-large {
       height: 36px;
-      padding: 9px 12px;
+      padding: 7px 12px;
     }
 
     &-middle {
       height: 32px;
-      padding: 7px 12px;
+      padding: 6px 12px;
     }
 
     &-small {
       height: 28px;
-      padding: 6px 8px;
+      padding: 5px 8px;
     }
   }
 
@@ -98,11 +98,13 @@ $input-disabled-color: #cccccc;
     font-size: 13px;
     color: $input-color;
     color: var(--qui-input-color);
+    display: inline-block;
 
     &Before {
       border-right: 0;
       border-top-left-radius: 2px;
       border-bottom-left-radius: 2px;
+      float: left;
 
       &-radius {
         border-top-left-radius: 0;

@@ -1,6 +1,12 @@
-# QUI-React
+# Woqu 前端 React 标准组件库
 
-### [预览地址](https://dalingzhong.github.io/qui-react/)
+### [主干 CD 展示地址](http://192.168.1.85:9999)
+
+### [ROADMAP 与进度情况](http://gitlab.woqutech.com/ui-module/qui-react/blob/release-1.0.0/roadmap.md)
+
+### [组件编写规范](http://gitlab.woqutech.com/ui-module/qui-react/tree/release-1.0.0/src/components)
+
+### [CSS 样式规范](http://gitlab.woqutech.com/ui-module/qui-react/tree/release-1.0.0/src/styles)
 
 ## 启动 dev-server
 
@@ -52,5 +58,3 @@ import { Button } from 'qui-react'
 - 如果遇到无法解析其他 `npm` 包 `ts` 接口语法情况，可以在`tsconfig`中加入 `"skipLibCheck": true` 配置跳过检查
 
 - 在`.gitignore`文件中添加了最终 `npm` 包，如果直接拉下分支使用其中的 `tgz` 包时建议重新执行编译打包命令，node 环境请使用`12.4.0`
-
-- `Dark Mode` 以及主题色更改功能基于 `CSS Variables` 特性，仅支持 `Chrome49` 及以上版本，不支持 `IE`

@@ -2,6 +2,7 @@ import * as React from 'react'
 
 import './index.scss'
 import Alert, { AlertTypeEnum } from '../index'
+import DemoCard from '@/page/components/DemoCard'
 
 const Demo: React.SFC<any> = React.memo(() => {
   const [isVisible, setVisible] = React.useState(true)
@@ -10,66 +11,31 @@ const Demo: React.SFC<any> = React.memo(() => {
   }
 
   return (
-    <section className="demo-alert">
-      <a href="https://lanhuapp.com/web/#/item/project/board/detail?pid=9937a2f3-0998-4b71-9cdd-7d64437f29eb&project_id=9937a2f3-0998-4b71-9cdd-7d64437f29eb&image_id=74da6242-c5a7-44ca-8446-f7a6436da835">
-        UI Design
-      </a>
-      <br />
-      <br />
-      <br />
-      <div className="demo-alert__item">
+    <div>
+      <DemoCard title="基本" des="最简单的用法，适用于简短的警告提示。" id="components-alert-demo-basic">
         <Alert type={AlertTypeEnum.info} message="提示的内容" />
-      </div>
+      </DemoCard>
 
-      <div className="demo-alert__item">
+      <DemoCard title="四种样式" des="共有四种样式 success、info、warning、error。" id="components-alert-demo-type">
+        <Alert type={AlertTypeEnum.info} message="提示的内容" />
         <Alert type={AlertTypeEnum.success} message="成功的内容" />
-      </div>
-
-      <div className="demo-alert__item">
         <Alert type={AlertTypeEnum.warning} message="警告的内容" />
-      </div>
-
-      <div className="demo-alert__item">
         <Alert type={AlertTypeEnum.error} message="错误的内容" />
-      </div>
+      </DemoCard>
 
-      <div className="demo-alert__item">
-        <Alert type={AlertTypeEnum.info} message="提示的内容" hasIcon={true} />
-      </div>
+      <DemoCard title="可关闭的" des="显示关闭按钮，点击可关闭警告提示。" id="components-alert-demo-close">
+        <Alert type={AlertTypeEnum.info} message="提示的内容" title="提示的标题" hasIcon={true} isClosable={true} />
+      </DemoCard>
 
-      <div className="demo-alert__item">
-        <Alert type={AlertTypeEnum.success} message="成功的内容" hasIcon={true} />
-      </div>
-
-      <div className="demo-alert__item">
-        <Alert type={AlertTypeEnum.warning} message="警告的内容" hasIcon={true} />
-      </div>
-
-      <div className="demo-alert__item">
-        <Alert type={AlertTypeEnum.error} message="错误的内容" hasIcon={true} />
-      </div>
-
-      <div className="demo-alert__item">
+      <DemoCard title="图标" des="可口的图标让信息类型更加醒目。" id="components-alert-demo-icon">
         <Alert type={AlertTypeEnum.info} message="提示的内容" title="带标题的" hasIcon={true} />
-      </div>
-
-      <div className="demo-alert__item">
         <Alert type={AlertTypeEnum.success} message="成功的内容" title="带标题的" hasIcon={true} />
-      </div>
-
-      <div className="demo-alert__item">
         <Alert type={AlertTypeEnum.warning} message="警告的内容" title="带标题的" hasIcon={true} />
-      </div>
-
-      <div className="demo-alert__item">
         <Alert type={AlertTypeEnum.error} message="错误的内容" title="带标题的" hasIcon={true} />
-      </div>
-
-      <div className="demo-alert__item">
         <Alert type={AlertTypeEnum.info} message="自定义 icon" hasIcon={true} icon="heart" />
-      </div>
+      </DemoCard>
 
-      {isVisible && (
+      {/* {isVisible && (
         <div className="demo-alert__item">
           <h4 style={{ marginBottom: '16px' }}>支持关闭动画结束后触发回调函数</h4>
           <Alert
@@ -80,24 +46,8 @@ const Demo: React.SFC<any> = React.memo(() => {
             onAfterClose={handleAfterClose}
           />
         </div>
-      )}
-
-      <div className="demo-alert__item">
-        <Alert type={AlertTypeEnum.info} message="提示的内容" title="提示的标题" hasIcon={true} />
-      </div>
-
-      <div className="demo-alert__item">
-        <Alert type={AlertTypeEnum.info} message="提示的内容" title="提示的标题" hasIcon={true} isClosable={true} />
-      </div>
-
-      <div className="demo-alert__item">
-        <h4 style={{ marginBottom: '16px' }}>连续的 Alert 之间会自带间隔</h4>
-        <Alert type={AlertTypeEnum.info} message="提示的内容" isClosable={true} />
-        <Alert type={AlertTypeEnum.success} message="成功的内容" isClosable={true} />
-        <Alert type={AlertTypeEnum.warning} message="警告的内容" isClosable={true} />
-        <Alert type={AlertTypeEnum.error} message="错误的内容" isClosable={true} />
-      </div>
-    </section>
+      )} */}
+    </div>
   )
 })
 

@@ -22,13 +22,16 @@ const Tabs: QTabInter = (props) => {
     let map: ChildItem[] = []
 
     React.Children.forEach<ChildItem>(children as any, (child) => {
-      if (child.type.tabItem) {
-        map.push(child)
-      } else {
-        console.warn(
-          'the children of `Tabs` should be `Tabs.Item`, ' +
-            `instead of \`${child.type.name || child.type.displayName || child.type}\`.`
-        )
+      // 优先判断是否为有效组件
+      if (!!child && child.type) {
+        if (child.type.tabItem) {
+          map.push(child)
+        } else {
+          console.warn(
+            'the children of `Tabs` should be `Tabs.Item`, ' +
+              `instead of \`${child.type.name || child.type.displayName || child.type}\`.`
+          )
+        }
       }
     })
 

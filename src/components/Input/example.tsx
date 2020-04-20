@@ -2,37 +2,48 @@ import * as React from 'react'
 import Input from './components/Input'
 import Textarea from './components/Textarea'
 
+import DemoCard from '@/page/components/DemoCard'
+
 export default function ExamplePage(props) {
   return (
     <div>
-      <h2>Input Example</h2>
-      <a href="https://lanhuapp.com/web/#/item/project/board?pid=0725176d-23e2-469a-97d0-c5567662d355">UI Design</a>
-      <br />
-      <a href="https://lanhuapp.com/web/#/item/project/board/detail?pid=9937a2f3-0998-4b71-9cdd-7d64437f29eb&project_id=9937a2f3-0998-4b71-9cdd-7d64437f29eb&image_id=acd3edec-e8ef-45ee-9c78-a75c6f5841ca">
-        Dark UI Design
-      </a>
-      <h3>Size</h3>
-      <h4>large</h4>
-      <Input size="large" placeholder="大尺寸输入框" />
-      <h4>middle</h4>
-      <Input size="middle" placeholder="默认尺寸输入框" />
-      <h4>small</h4>
-      <Input size="small" placeholder="小尺寸输入框" />
+      <DemoCard title="基本使用" des="基本使用。" id="components-input-demo-basic">
+        <Input placeholder="base" />
+      </DemoCard>
 
-      <h3>Addon</h3>
-      <Input size="large" addonBefore="http://www." addonAfter="/#/" autoComplete="off" />
+      <DemoCard
+        title="三种大小"
+        des="我们为 <Input /> 输入框定义了三种尺寸（大、默认、小），高度分别为 36px、32px 和 28px。"
+        id="components-input-demo-size"
+      >
+        <Input size="large" placeholder="大尺寸输入框" />
+        <br />
+        <br />
+        <Input size="middle" placeholder="默认尺寸输入框" />
+        <br />
+        <br />
+        <Input size="small" placeholder="小尺寸输入框" />
+      </DemoCard>
 
-      <h3>Prefix / Suffix / Type</h3>
-      <Input type="password" autoComplete="off" />
+      <DemoCard title="前置/后置标签" des="用于配置一些固定组合。" id="components-input-demo-addon">
+        <Input size="large" addonBefore="http://www." addonAfter="/#/" autoComplete="off" />
+      </DemoCard>
 
-      <h3>Disabled</h3>
-      <Input value="test" type="password" isDisabled placeholder="默认尺寸输入框" />
+      <DemoCard title="前缀和后缀" des="在输入框上添加前缀或后缀图标或直接成为密码框。" id="components-input-demo-fix">
+        <Input type="password" autoComplete="off" />
+      </DemoCard>
 
-      <h3>Textarea</h3>
-      <Textarea rows={3} />
+      <DemoCard title="禁用状态" des="输入框禁用状态。" id="components-input-demo-disabled">
+        <Input value="test" type="password" isDisabled placeholder="默认尺寸输入框" />
+      </DemoCard>
 
-      <h3>Error</h3>
-      <Input placeholder="test" isError errorText="必填项" />
+      <DemoCard title="文本域" des="可指定行数。" id="components-input-demo-textarea">
+        <Textarea rows={3} />
+      </DemoCard>
+
+      <DemoCard title="状态" des="可指定输入框错误状态。" id="components-input-demo-error">
+        <Input placeholder="test" isError errorText="必填项" />
+      </DemoCard>
     </div>
   )
 }

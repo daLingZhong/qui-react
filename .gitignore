@@ -1,7 +1,13 @@
+types
+
+# Package #
+qui-react-1.0.0.tgz
+
 # NodeJS #
 node_modules
 bower_components
 dist
+docs
 npm-debug*
 lib
 

@@ -1,47 +1,41 @@
 import * as React from 'react'
 import { Steps, StepItem } from './index'
 
-const ExamplePage = () => {
-  const [change, setChange] = React.useState(true)
-  const [step, setStep] = React.useState(0)
-  console.log(step)
-  const data = change
-    ? [
-        { title: '第一步', description: '哈哈哈' },
-        { title: '第二步', description: '嘿嘿嘿' },
-        { title: '第三步', description: '耶耶耶' },
-      ]
-    : [
-        { title: 'one', description: '哈哈哈' },
-        { title: 'two', description: '嘿嘿嘿' },
-        { title: 'three', description: '耶耶耶' },
-      ]
+import Button from '@/components/Button'
+import DemoCard from '@/page/components/DemoCard'
 
-  const handleChange = () => {
-    setChange(!change)
-  }
+const ExamplePage = () => {
+  const [step, setStep] = React.useState(0)
+  const data = [
+    { title: '第一步', description: '哈哈哈' },
+    { title: '第二步', description: '嘿嘿嘿' },
+    { title: '第三步', description: '耶耶耶' },
+  ]
 
   return (
     <>
-      <h3>Horizontal</h3>
-      <button onClick={() => setStep(step + 1)}>click</button>
-      <Steps size="default" current={step}>
-        {data.map((v, index) => (
-          <StepItem title={v.title} description={v.description} key={index}>
-            {index + 1}
-          </StepItem>
-        ))}
-      </Steps>
-      <h3>Vertical</h3>
-      <Steps size="default" direction="vertical">
-        {data.map((v, index) => (
-          <StepItem title={v.title} description={v.description} key={index}>
-            {index + 1}
-          </StepItem>
-        ))}
-      </Steps>
+      <DemoCard title="基本用法" des="简单的步骤条。" id="components-steps-demo-basic">
+        <Steps size="default" current={step}>
+          {data.map((v, index) => (
+            <StepItem title={v.title} description={v.description} key={index}>
+              {index + 1}
+            </StepItem>
+          ))}
+        </Steps>
+        <Button style={{ margin: '10px 0' }} onClick={() => setStep(step + 1)}>
+          Next
+        </Button>
+      </DemoCard>
 
-      <button onClick={handleChange}>语言切换</button>
+      <DemoCard title="竖直方向的步骤条" des="简单的竖直方向的步骤条。" id="components-steps-demo-vertical">
+        <Steps size="default" direction="vertical">
+          {data.map((v, index) => (
+            <StepItem title={v.title} description={v.description} key={index}>
+              {index + 1}
+            </StepItem>
+          ))}
+        </Steps>
+      </DemoCard>
     </>
   )
 }

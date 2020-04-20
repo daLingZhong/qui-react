@@ -1,3 +1,3 @@
-import { Transition, CSSTransition, TransitionGroup } from 'react-transition-group'
+import { Transition, CSSTransition, TransitionGroup, SwitchTransition } from 'react-transition-group'
 
-export { Transition, CSSTransition, TransitionGroup }
+export { Transition, CSSTransition, TransitionGroup, SwitchTransition }
